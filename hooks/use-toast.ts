@@ -11,7 +11,8 @@ type ToasterToast = {
   title?: React.ReactNode
   description?: React.ReactNode
   action?: React.ReactNode
-  onOpenChange?: (open: boolean) => void  // Dodaj tę linię
+  onOpenChange?: (open: boolean) => void
+  variant?: "default" | "destructive" | "success"  // Dodaj tę linię
 }
 
 const actionTypes = {
