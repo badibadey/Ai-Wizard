@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "tsc --project tsconfig.json"
   },
   "dependencies": {
     "@deepgram/sdk": "^3.8.1",

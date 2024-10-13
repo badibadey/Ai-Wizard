@@ -39,3 +39,7 @@ next-env.d.ts
 .env.local
 .env
 .env.local
+
+# Netlify functions build output
+netlify/functions/**/*.js
+netlify/functions/**/*.js.map
