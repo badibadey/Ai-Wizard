@@ -1,4 +1,3 @@
-const { buffer } = require('micro')
 const formidable = require('formidable-serverless')
 const OpenAI = require('openai')
 const fs = require('fs')
