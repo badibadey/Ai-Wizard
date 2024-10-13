@@ -5,7 +5,7 @@ const { Deepgram } = require('@deepgram/sdk')
 const fetch = require('node-fetch')
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
-const deepgram = new Deepgram({ apiKey: process.env.DEEPGRAM_API_KEY })
+const deepgram = new Deepgram(process.env.DEEPGRAM_API_KEY)
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== 'POST') {

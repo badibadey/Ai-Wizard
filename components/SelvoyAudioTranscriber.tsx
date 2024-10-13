@@ -87,12 +87,17 @@ export default function SelvoyAudioTranscriber() {
     formData.append('targetLanguage', targetLanguage);
 
     try {
-      const response = await fetch('/.netlify/functions/transcribe-translate', {
-        method: 'POST',
-        body: formData,
+      const response = await axios.post('/api/transcribe-translate', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+        onUploadProgress: (progressEvent) => {
+          if (progressEvent.total) {
+            const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+            setProgress(percentCompleted);
+          }
+        },
       });
 
-      const { transcription, translation } = await response.json();
+      const { transcription, translation } = response.data;
       const finalResult = `Transkrypcja (${sourceLanguage}):\n${transcription}\n\nTłumaczenie (${targetLanguage}):\n${translation}`;
       
       setResult(finalResult);

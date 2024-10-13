@@ -24,6 +24,10 @@ const nextConfig = {
     config.resolve.alias['@'] = path.resolve(__dirname);
     return config;
   },
+  env: {
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    DEEPGRAM_API_KEY: process.env.DEEPGRAM_API_KEY,
+  },
 };
 
 export default nextConfig;

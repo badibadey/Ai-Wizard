@@ -6,7 +6,6 @@ import { createClient } from '@deepgram/sdk';
 import fetch from 'node-fetch';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { Readable } from 'stream';
-const { Deepgram } = require('@deepgram/sdk');
 
 // Language code to name mapping
 const languageMap: { [key: string]: string } = {
@@ -40,8 +39,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!openaiApiKey || !deepgramApiKey) {
     throw new Error('Brak zdefiniowanych kluczy API w zmiennych środowiskowych.');
   }
+
   const openai = new OpenAI({ apiKey: openaiApiKey });
-  const deepgram = new Deepgram({ apiKey: deepgramApiKey });
+  const deepgram = createClient(deepgramApiKey);
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Metoda niedozwolona' });
@@ -217,7 +217,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             messages: [
               {
                 role: "system",
-                content: "Jeste ekspertem w analizie transkrypcji rozmów. Twoim zadaniem jest zidentyfikowanie, który mówca jest agentem obsługi klienta, a który klientem. Oznacz każdą wypowiedź odpowiednio [Agent] lub [Klient]."
+                content: "Jesteś ekspertem w analizie transkrypcji rozmów. Twoim zadaniem jest zidentyfikowanie, który mówca jest agentem obsługi klienta, a który klientem. Oznacz każdą wypowiedź odpowiednio [Agent] lub [Klient]."
               },
               {
                 role: "user",
