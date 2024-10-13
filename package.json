@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run clean && next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "tsc --project tsconfig.json"
+    "postbuild": "tsc --project tsconfig.json",
+    "clean": "rm -rf .next"
   },
   "dependencies": {
     "@deepgram/sdk": "^3.8.1",
