@@ -6,6 +6,7 @@ import { createClient } from '@deepgram/sdk';
 import fetch from 'node-fetch';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { Readable } from 'stream';
+import { Deepgram } from '@deepgram/sdk';
 
 // Language code to name mapping
 const languageMap: { [key: string]: string } = {
@@ -39,9 +40,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (!openaiApiKey || !deepgramApiKey) {
     throw new Error('Brak zdefiniowanych kluczy API w zmiennych środowiskowych.');
   }
-
   const openai = new OpenAI({ apiKey: openaiApiKey });
-  const deepgram = createClient(deepgramApiKey);
+  const deepgram = new Deepgram(deepgramApiKey);
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Metoda niedozwolona' });

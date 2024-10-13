@@ -1,11 +1,11 @@
 const formidable = require('formidable-serverless')
 const OpenAI = require('openai')
 const fs = require('fs')
-const { createClient } = require('@deepgram/sdk')
+const { Deepgram } = require('@deepgram/sdk')
 const fetch = require('node-fetch')
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
-const deepgram = createClient(process.env.DEEPGRAM_API_KEY)
+const deepgram = new Deepgram(process.env.DEEPGRAM_API_KEY)
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== 'POST') {
