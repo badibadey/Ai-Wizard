@@ -20,6 +20,7 @@
     "clsx": "^2.1.1",
     "docx": "^9.0.0",
     "dotenv": "^16.4.5",
+    "formidable": "^3.5.1",
     "formidable-serverless": "^1.1.1",
     "framer-motion": "^11.11.1",
     "jsonwebtoken": "^9.0.2",
@@ -27,14 +28,14 @@
     "micro": "^9.3.4",
     "mongodb": "^6.9.0",
     "next": "14.2.14",
+    "node-fetch": "^2.6.1",
     "openai": "^4.0.0",
     "react": "^18",
     "react-dom": "^18",
     "react-dropzone": "^14.2.9",
     "tailwind-merge": "^2.5.3",
     "tailwindcss-animate": "^1.0.7",
-    "wavefile": "^11.0.0",
-    "node-fetch": "^2.6.1"
+    "wavefile": "^11.0.0"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^5.7.4",
