@@ -6,5 +6,11 @@
       "use": "@vercel/next"
     }
   ]
-}
 
+{
+  "functions": {
+    "api/transcribe-translate.ts": {
+      "maxDuration": 60
+    }
+  }
+}
