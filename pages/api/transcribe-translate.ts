@@ -6,7 +6,7 @@ import { createClient } from '@deepgram/sdk';
 import fetch from 'node-fetch';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 import { Readable } from 'stream';
-import { Deepgram } from '@deepgram/sdk';
+const { Deepgram } = require('@deepgram/sdk');
 
 // Language code to name mapping
 const languageMap: { [key: string]: string } = {
@@ -217,7 +217,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             messages: [
               {
                 role: "system",
-                content: "Jesteś ekspertem w analizie transkrypcji rozmów. Twoim zadaniem jest zidentyfikowanie, który mówca jest agentem obsługi klienta, a który klientem. Oznacz każdą wypowiedź odpowiednio [Agent] lub [Klient]."
+                content: "Jeste�� ekspertem w analizie transkrypcji rozmów. Twoim zadaniem jest zidentyfikowanie, który mówca jest agentem obsługi klienta, a który klientem. Oznacz każdą wypowiedź odpowiednio [Agent] lub [Klient]."
               },
               {
                 role: "user",
