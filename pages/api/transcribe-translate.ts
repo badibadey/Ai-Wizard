@@ -41,7 +41,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     throw new Error('Brak zdefiniowanych kluczy API w zmiennych środowiskowych.');
   }
   const openai = new OpenAI({ apiKey: openaiApiKey });
-  const deepgram = new Deepgram(deepgramApiKey);
+  const deepgram = new Deepgram({ apiKey: deepgramApiKey });
 
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Metoda niedozwolona' });
@@ -217,7 +217,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             messages: [
               {
                 role: "system",
-                content: "Jeste�� ekspertem w analizie transkrypcji rozmów. Twoim zadaniem jest zidentyfikowanie, który mówca jest agentem obsługi klienta, a który klientem. Oznacz każdą wypowiedź odpowiednio [Agent] lub [Klient]."
+                content: "Jeste ekspertem w analizie transkrypcji rozmów. Twoim zadaniem jest zidentyfikowanie, który mówca jest agentem obsługi klienta, a który klientem. Oznacz każdą wypowiedź odpowiednio [Agent] lub [Klient]."
               },
               {
                 role: "user",

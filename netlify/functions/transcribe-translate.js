@@ -5,7 +5,7 @@ const { Deepgram } = require('@deepgram/sdk')
 const fetch = require('node-fetch')
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
-const deepgram = new Deepgram(process.env.DEEPGRAM_API_KEY)
+const deepgram = new Deepgram({ apiKey: process.env.DEEPGRAM_API_KEY })
 
 exports.handler = async (event, context) => {
   if (event.httpMethod !== 'POST') {
@@ -37,11 +37,11 @@ exports.handler = async (event, context) => {
         // Transcribe audio
         console.log('Starting transcription');
         const audioBuffer = fs.readFileSync(file.path)
-        const { results } = await deepgram.transcription.preRecorded(
+        const response = await deepgram.transcription.preRecorded(
           { buffer: audioBuffer, mimetype: file.type },
           { punctuate: true, language: 'en-US' }
-        )
-        const transcript = results.channels[0].alternatives[0].transcript
+        );
+        const transcript = response.results.channels[0].alternatives[0].transcript;
         console.log('Transcription completed:', transcript);
 
         // Translate transcript
